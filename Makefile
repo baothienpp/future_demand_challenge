@@ -5,7 +5,6 @@
 .ONESHELL:
 SHELL := /bin/bash
 
-AWS_REGION = $(REGION)
 CUR_DIR = $(PWD)
 
 init:
@@ -21,12 +20,14 @@ plan: init update
     @cd terraform/ && terraform plan \
 		-input=false \
 		-refresh=true \
-		-module-depth=-1
+		-module-depth=-1 \
+		-var 'prefix=$(PREFIX)'
 
 apply: init update unittest
 	@cd terraform/ && terraform apply \
 		-input=true \
 		-refresh=true \
+		-var 'prefix=$(PREFIX)'
 		&& cd $(CUR_DIR)/src && rm -rf main.zip
 
 plan-destroy: init update
@@ -34,7 +35,8 @@ plan-destroy: init update
 		-input=false \
 		-refresh=true \
 		-module-depth=-1 \
-		-destroy
+		-destroy \
+		-var 'prefix=$(PREFIX)'
 
 destroy: init update
 	@cd terraform/ && terraform destroy

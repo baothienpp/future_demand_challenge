@@ -14,7 +14,7 @@ terraform {
 # S3 Bucket
 ################################################################################
 resource "aws_s3_bucket" "anagram_bucket" {
-  bucket = var.bucket_name
+  bucket = var.prefix == "" ? var.bucket_name : "${var.prefix}-${var.bucket_name}"
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {

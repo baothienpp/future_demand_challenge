@@ -17,4 +17,13 @@ Terraform v0.12.24
 git clone https://github.com/baothienpp/future_demand_challenge.git
 cd future_demand_challenge
 make apply
+
+(Optional) In case you want to add a prefix to the bucket name 
+(because the bucket name might have been already existed)
+
+export PREFIX=<some-name>
+make apply
 ```
+
+
+

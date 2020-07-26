@@ -6,6 +6,10 @@ variable "bucket_name" {
   default = "anagram-fd-testing"
 }
 
+variable "prefix" {
+  default = ""
+}
+
 variable "runtime"{
   default = "python3.7"
 }

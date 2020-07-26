@@ -2,3 +2,6 @@ src/lambda/env
 .terraform
 terraform.tfstate
 terraform.tfstate.backup
+.pytest_cache
+__pycache__
+.idea
